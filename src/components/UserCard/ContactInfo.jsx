@@ -14,6 +14,9 @@ const ContactInfo = (props) => {
         <h4>{props.user.address.suite}</h4>
         <h4>{props.user.address.city} {props.user.address.zip}</h4>
       </div>
+      <a href={props.user.website}>
+        <button className="website-btn">website</button>
+      </a>
     </div>
   );
 }
