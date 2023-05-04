@@ -6,7 +6,7 @@ console.log(pokeData)
 
 
 const Pokedex = () => {
-  const displayCount = 10
+  const displayCount = 100
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemonData(0))
 
@@ -18,13 +18,19 @@ const Pokedex = () => {
   }
 
   const handleNextPage = () => {
-    setCurrIdx(currIdx + displayCount)
-    setDisplayedPokemon(filterPokemonData(currIdx + displayCount))
+    const newIdx = currIdx + displayCount
+    if (newIdx <= pokeData.length) {
+      setCurrIdx(newIdx)
+      setDisplayedPokemon(filterPokemonData(newIdx))
+    }
   }
 
   const handlePrevPage = () => {
-    setCurrIdx(currIdx - displayCount)
-    setDisplayedPokemon(filterPokemonData(currIdx - displayCount))
+    const newIdx = currIdx - displayCount
+    if (newIdx > 0) {
+      setCurrIdx(currIdx - displayCount)
+      setDisplayedPokemon(filterPokemonData(currIdx - displayCount))
+    }
   }
 
   return ( 
@@ -35,7 +41,7 @@ const Pokedex = () => {
         <button onClick={handleNextPage}>&gt;</button>
       </div>
       <div className="num-results-container">
-        Results {currIdx + 1} to  {currIdx + displayCount} of {pokeData.length}
+        Results {currIdx + 1} to  {(currIdx + displayCount <= pokeData.length) ? currIdx + displayCount : pokeData.length} of {pokeData.length}
       </div>
       <div className="pokemon-container">
         {displayedPokemon.map(pokemon => 
