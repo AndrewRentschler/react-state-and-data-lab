@@ -3,7 +3,7 @@ const ContactInfo = (props) => {
     <div className="contact-container">
       <div className="contact-info company">
         <h2>{props.user.company.name}</h2>
-        <h5>{props.user.company.catchPhrase}</h5>
+        <h5>"{props.user.company.catchPhrase}"</h5>
       </div>
       <div className="contact-info">
         <h4>{props.user.email}</h4>
