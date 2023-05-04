@@ -5,7 +5,7 @@ import { pokeData } from "../../data/pokeData"
 console.log(pokeData)
 
 const Pokedex = () => {
-  const displayCount = 10
+  const displayCount = 100
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemonData(0))
 
