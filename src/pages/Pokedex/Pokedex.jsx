@@ -4,9 +4,8 @@ import "./Pokedex.css"
 import { pokeData } from "../../data/pokeData"
 console.log(pokeData)
 
-
 const Pokedex = () => {
-  const displayCount = 100
+  const displayCount = 10
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemonData(0))
 
