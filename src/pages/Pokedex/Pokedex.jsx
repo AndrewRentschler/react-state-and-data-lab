@@ -8,17 +8,34 @@ console.log(pokeData)
 const Pokedex = () => {
   const displayCount = 10
   const [currIdx, setCurrIdx] = useState(0)
-  const [displayedPokemon, setDisplayedPokemon] = useState(pokeData)
+  const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemonData(0))
+
+  function filterPokemonData(newIdx) {
+    const filteredData = pokeData.filter((poke, idx) => {
+      return idx >= newIdx && idx < (newIdx + displayCount)
+    })
+    return filteredData
+  }
+
+  const handleNextPage = () => {
+    setCurrIdx(currIdx + displayCount)
+    setDisplayedPokemon(filterPokemonData(currIdx + displayCount))
+  }
+
+  const handlePrevPage = () => {
+    setCurrIdx(currIdx - displayCount)
+    setDisplayedPokemon(filterPokemonData(currIdx - displayCount))
+  }
 
   return ( 
     <>
       <h1>Pokemon List</h1>
       <div className="pagination-container">
-        <button>&lt;</button>
-        <button>&gt;</button>
+        <button onClick={handlePrevPage}>&lt;</button>
+        <button onClick={handleNextPage}>&gt;</button>
       </div>
       <div className="num-results-container">
-        Results ## - ## of {pokeData.length}
+        Results {currIdx + 1} to  {currIdx + displayCount} of {pokeData.length}
       </div>
       <div className="pokemon-container">
         {displayedPokemon.map(pokemon => 

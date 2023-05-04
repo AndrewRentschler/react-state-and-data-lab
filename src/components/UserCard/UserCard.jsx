@@ -6,9 +6,8 @@ import { useState } from 'react'
 const UserCard = (props) => {
   const [showDetails, setShowDetails] = useState(true)
 
-  function handleShowDetailsClick() {
+  const handleShowDetailsClick = () => 
     setShowDetails(!showDetails)
-  }
 
   return ( 
     <div className='user-card'>
