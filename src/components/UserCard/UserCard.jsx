@@ -4,7 +4,7 @@ import ContactInfo from './ContactInfo'
 import { useState } from 'react'
 
 const UserCard = (props) => {
-  const [showDetails, setShowDetails] = useState(false)
+  const [showDetails, setShowDetails] = useState(true)
 
   function handleShowDetailsClick() {
     setShowDetails(!showDetails)
