@@ -1,7 +1,10 @@
 const ContactInfo = (props) => {
   return ( 
     <div className="contact-container">
-      <div className="contact-info company">{props.user.company.name}</div>
+      <div className="contact-info company">
+        <h2>{props.user.company.name}</h2>
+        <h5>{props.user.company.catchPhrase}</h5>
+      </div>
       <div className="contact-info">
         <h4>{props.user.email}</h4>
         <h4>{props.user.phone}</h4>

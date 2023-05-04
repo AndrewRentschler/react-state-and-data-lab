@@ -1,5 +1,6 @@
 import './UserCard.css'
 import ProfileInfo from './ProfileInfo'
+import ContactInfo from './ContactInfo'
 import { useState } from 'react'
 
 const UserCard = (props) => {
@@ -11,7 +12,11 @@ const UserCard = (props) => {
 
   return ( 
     <div className='user-card'>
-      <ProfileInfo key={props.user.id} user={props.user}/>
+      {showDetails ?
+        <ProfileInfo key={props.user.id} user={props.user}/>
+        :
+        <ContactInfo key={props.user.id} user={props.user}/>
+      }
       <button onClick={handleShowDetailsClick}>
         {showDetails ? 'Show ': 'Hide '} Contact Info
       </button>
