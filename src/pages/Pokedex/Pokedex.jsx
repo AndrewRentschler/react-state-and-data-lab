@@ -5,7 +5,7 @@ import { pokeData } from "../../data/pokeData"
 console.log(pokeData)
 
 const Pokedex = () => {
-  const displayCount = 100
+  const [displayCount, setDisplayCount ]= useState(10)
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemonData(0))
 
@@ -26,7 +26,7 @@ const Pokedex = () => {
 
   const handlePrevPage = () => {
     const newIdx = currIdx - displayCount
-    if (newIdx > 0) {
+    if (newIdx >= 0) {
       setCurrIdx(currIdx - displayCount)
       setDisplayedPokemon(filterPokemonData(currIdx - displayCount))
     }
@@ -42,6 +42,7 @@ const Pokedex = () => {
       <div className="num-results-container">
         Results {currIdx + 1} to  {(currIdx + displayCount <= pokeData.length) ? currIdx + displayCount : pokeData.length} of {pokeData.length}
       </div>
+
       <div className="pokemon-container">
         {displayedPokemon.map(pokemon => 
           <Link to={`/pokemon/${pokemon.number - 1}`} key={pokemon._id}>
